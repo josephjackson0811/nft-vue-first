@@ -124,7 +124,7 @@ export default {
     display: none;
   }
   .v-list{
-    padding: 8px 15px;
+    padding: 8px 5px;
   }
   .v-list-item{
       &__icon--text,
