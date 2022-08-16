@@ -24,7 +24,7 @@
                 </v-card>
             </v-col>
         </v-row>
-        <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+        <!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
     </v-container>
 </template>
 
