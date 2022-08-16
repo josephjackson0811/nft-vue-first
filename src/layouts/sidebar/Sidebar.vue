@@ -105,7 +105,7 @@ export default {
       this.$refs.metamask.init();
     },
     onComplete(data){
-      data.metaMaskAddress = "0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
+      // data.metaMaskAddress = "0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
       this.loading =  true
       this.$store.dispatch('loadAssets', data.metaMaskAddress).then(() => {
         this.isLoading = false;
