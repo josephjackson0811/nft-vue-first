@@ -22,7 +22,7 @@
             :border-size="0"
             borderColor="#8AA5FF"
             :size="180"
-            :background-image="`url(${assets[0].metadata.image})`"
+            :background-image="`url(${assets[0].media[0].thumbnail})`"
           >
           </Hexagon>
         </v-list-item-content>
@@ -107,7 +107,7 @@ export default {
     },
     onComplete(data){
       this.metaMaskAddress = data.metaMaskAddress;
-      // data.metaMaskAddress = "0x0E11A192d574b342C51be9e306694C41547185DD"; //"0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
+      // data.metaMaskAddress = "0x82dd54b3CD39de52F4B40e95FEf3D97852ca636f"; //"0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
       this.loading =  true
       this.$store.dispatch('loadAssets', data.metaMaskAddress).then(() => {
         this.isLoading = false;
