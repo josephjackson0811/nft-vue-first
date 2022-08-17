@@ -22,7 +22,7 @@
             :border-size="3"
             borderColor="#8AA5FF"
             :size="180"
-            :background-image="`url(${assets.assets[0].imageUrl})`"
+            :background-image="`url(${assets[0].metadata.image})`"
           >
           </Hexagon>
         </v-list-item-content>
@@ -31,10 +31,10 @@
       <v-list-item v-if="isLoading != true">
         <v-list-item-content>
           <v-list-item-title style="font-size:30px; color: white;text-align: center;">
-            {{assets.owner.substr(0,4)+'...'+assets.owner.substr(-3)}}
+            {{metaMaskAddress.substr(0,4)+'...'+metaMaskAddress.substr(-3)}}
             </v-list-item-title>
           <v-list-item-title style="color: white;text-align: center;">
-            {{assets.assets[0].collectionName}}
+            {{assets[0].metadata.name}}
             <img src="../../assets/conf.png" class="mt-4" />
           </v-list-item-title>
         </v-list-item-content>
@@ -43,7 +43,7 @@
         <v-list-item-content>
           <v-list-item-title style="font-size:30px; color: white;text-align: center;">
           <img src="../../assets/middle.png" class="mt-4" />
-            {{assets.owner.substr(0,4)+'...'+assets.owner.substr(-3)}}
+            {{metaMaskAddress.substr(0,4)+'...'+metaMaskAddress.substr(-3)}}
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -77,6 +77,7 @@ export default {
     VueMetamask
   },
   data: () => ({
+    metaMaskAddress: '',
     isLoading: true
   }),
   computed: {
@@ -105,7 +106,8 @@ export default {
       this.$refs.metamask.init();
     },
     onComplete(data){
-      // data.metaMaskAddress = "0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
+      this.metaMaskAddress = data.metaMaskAddress;
+      // data.metaMaskAddress = "0x0E11A192d574b342C51be9e306694C41547185DD"; //"0x0E11A192d574b342C51be9e306694C41547185DD"; // To do
       this.loading =  true
       this.$store.dispatch('loadAssets', data.metaMaskAddress).then(() => {
         this.isLoading = false;
